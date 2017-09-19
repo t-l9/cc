@@ -37,7 +37,6 @@ export function makeRequest(slug) {
 
 
 
-
 function getIssues(repoId, snapshot) {
     return fetch(`https://api.codeclimate.com/v1/repos/${repoId}/snapshots/${snapshot}/issues?filter[severity]=minor`)
         .then(function(res) {
@@ -50,7 +49,6 @@ function getIssues(repoId, snapshot) {
             console.log(error);
         });
 }
-
 
 
 

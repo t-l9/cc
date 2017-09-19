@@ -1,6 +1,10 @@
-.recent-search {
-    cursor: pointer;
-    &:hover {
-        text-decoration: underline;
+body{
+    margin-top: 50px;
+
+    .recent-search {
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }

@@ -8,6 +8,7 @@ export default class Repos extends Component {
         };
     }
 
+
     favorited(event, repo) {
         if (typeof(Storage) !== "undefined") {
             const storage = localStorage.getItem("repos")
@@ -24,10 +25,12 @@ export default class Repos extends Component {
         }
     }
 
+
     setStorage(repo) {
         this.state.repos.push(repo)
         localStorage.setItem("repos", JSON.stringify(this.state.repos));
     }
+
 
     render() {
         let favoritedRepos = JSON.parse(localStorage.getItem('repos'));
@@ -42,7 +45,6 @@ export default class Repos extends Component {
                         </ul>
                     </div>
                 )}
-
                 <h1>Favorited:</h1>
                 {favoritedRepos != null && (
                     <ul>

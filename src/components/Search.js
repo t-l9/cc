@@ -15,9 +15,11 @@ class Search extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+
     handleChange(event) {
         this.setState({value: event.target.value});
     }
+
 
     handleSubmit(event) {
         const repo = {}
@@ -35,6 +37,7 @@ class Search extends React.Component {
         event.preventDefault();
     }
 
+
     searched(repo) {
         let newArray = this.state.searched.slice();
         if(!newArray.includes(repo)) {
@@ -42,6 +45,7 @@ class Search extends React.Component {
             this.setState({searched:newArray})
         }
     }
+
 
     render() {
         return (
@@ -56,7 +60,7 @@ class Search extends React.Component {
                         <form onSubmit={this.handleSubmit}>
                             <label>
                                 Repository:
-                                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                                <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="facebook/react"/>
                             </label>
                             <input type="submit" value="Submit" />
                         </form>

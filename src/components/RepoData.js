@@ -1,22 +1,28 @@
 import React, { Component } from 'react'
 
+
 export default class RepoData extends Component {
     constructor(props) {
         super(props)
     }
+
 
     render() {
         let builds = this.props.currentRepo.builds.data
         let files = this.props.currentRepo.files.data
         let issues = this.props.currentRepo.issues.data
 
+
         return (
             <div id="repo-data">
-                <div id="gpa">
-                    <p>Repo GPA: { this.props.currentRepo.gpa }</p>
-                </div>
 
-                <div id="builds">
+
+                <section id="gpa">
+                    <p>Repo GPA: { this.props.currentRepo.gpa }</p>
+                </section>
+
+
+                <section id="builds">
                     { builds.length > 0 && (
                         <div>
                             <p>Latest Builds:</p>
@@ -25,9 +31,10 @@ export default class RepoData extends Component {
                             </ul>
                         </div>
                     )}
-                </div>
+                </section>
 
-                <div id="latest-snapshot-files-ratings">
+
+                <section id="latest-snapshot-files-ratings">
                     { files.length > 0 && (
                         <div>
                             <p>Files and Their Their Ratings:</p>
@@ -36,9 +43,10 @@ export default class RepoData extends Component {
                             </ul>
                         </div>
                     )}
-                </div>
+                </section>
 
-                <div id="issues">
+
+                <section id="issues">
                     { issues.length > 0 && (
                         <div>
                             <p>Issues by File In the Latest Build (Filtered by minor severity):</p>
@@ -47,7 +55,9 @@ export default class RepoData extends Component {
                             </ul>
                         </div>
                     )}
-                </div>
+                </section>
+
+
             </div>
         )
     }
