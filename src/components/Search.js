@@ -46,6 +46,10 @@ class Search extends React.Component {
     render() {
         return (
             <div>
+                <section className="side-bar">
+                    {this.state.searched.length > 0 ? <Repos repos={this.state.searched}/> : null}
+                </section>
+
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Repository:
@@ -54,7 +58,6 @@ class Search extends React.Component {
                     <input type="submit" value="Submit" />
                 </form>
 
-                {this.state.searched.length > 0 ? <Repos repos={this.state.searched}/> : null}
                 {this.state.currentRepo != null ? <RepoData currentRepo={this.state.currentRepo}/> : null}
             </div>
         )
