@@ -22,7 +22,7 @@ class Search extends React.Component {
 
     handleSubmit(event) {
         const repo = {}
-        const slug = this.state.value;
+        const slug = this.state.value.toLowerCase();
         const response = makeRequest(slug);
 
         response.then(function(res) {
@@ -34,9 +34,11 @@ class Search extends React.Component {
     }
 
     searched(repo) {
-        var newArray = this.state.searched.slice();
-        newArray.push(repo);
-        this.setState({searched:newArray})
+        let newArray = this.state.searched.slice();
+        if(!newArray.includes(repo)) {
+            newArray.push(repo);
+            this.setState({searched:newArray})
+        }
     }
 
     render() {

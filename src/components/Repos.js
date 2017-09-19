@@ -8,7 +8,7 @@ export default class Repos extends Component {
     render() {
         return (
             <ul>
-                { this.props.repos.map((repo, i) => <li key={i}>{repo}</li>)}
+                { this.props.repos.map((repo, i) => <li key={i}>{repo}</li>) }
             </ul>
         )
     }
