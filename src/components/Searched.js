@@ -9,6 +9,12 @@ export default class Repos extends Component {
     }
 
 
+    /**
+     * Kicks off localStorage flow to check if a repo has already been stored.
+     * @param {object} event
+     * @param {string} repo
+     * @returns {undefined}
+     */
     favorited(event, repo) {
         if (typeof(Storage) !== "undefined") {
             const storage = localStorage.getItem("repos")
@@ -26,6 +32,11 @@ export default class Repos extends Component {
     }
 
 
+    /**
+     * Adds repo to the state and stringifies them for storage.
+     * @param {string} repo
+     * @returns {undefined}
+     */
     setStorage(repo) {
         this.state.repos.push(repo)
         localStorage.setItem("repos", JSON.stringify(this.state.repos));

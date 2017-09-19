@@ -16,11 +16,21 @@ class Search extends React.Component {
     }
 
 
+    /**
+     * Handles the change event on the input.
+     * @returns {undefined}
+     */
     handleChange(event) {
         this.setState({value: event.target.value});
     }
 
 
+    /**
+     * Initiates the submit action and init's the makeRequest
+     * call to gather data.
+     * @param {object} event
+     * @returns {undefined}
+     */
     handleSubmit(event) {
         const repo = {}
         const slug = this.state.value.toLowerCase();
@@ -37,7 +47,12 @@ class Search extends React.Component {
         event.preventDefault();
     }
 
-
+    /**
+     * Creates new array and sets the state to
+     * the cumulative recent searches.
+     * @param {string} repo
+     * @returns {undefined}
+     */
     searched(repo) {
         let newArray = this.state.searched.slice();
         if(!newArray.includes(repo)) {

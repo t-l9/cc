@@ -1,3 +1,8 @@
+/**
+ * Makes API request to endpoint to gather all data.
+ * @param {string} slug   github slug
+ * @returns {object}      API reponse
+ */
 export function makeRequest(slug) {
     let repo = {}
 
@@ -36,7 +41,12 @@ export function makeRequest(slug) {
 }
 
 
-
+/**
+ * Requests lastest snapshot's issues by a hardcoded minor filter.
+ * @param {string} repoId     current repo's id
+ * @param {string} snapshot   snapshot from lastest build
+ * @returns {object}          API reponse
+ */
 function getIssues(repoId, snapshot) {
     return fetch(`https://api.codeclimate.com/v1/repos/${repoId}/snapshots/${snapshot}/issues?filter[severity]=minor`)
         .then(function(res) {
@@ -51,7 +61,12 @@ function getIssues(repoId, snapshot) {
 }
 
 
-
+/**
+ * Requests lastest snapshot's files.
+ * @param {string} repoId     current repo's id
+ * @param {string} snapshot   snapshot from lastest build
+ * @returns {object}          API reponse
+ */
 function getFiles(repoId, snapshot) {
     return fetch(`https://api.codeclimate.com/v1/repos/${repoId}/snapshots/${snapshot}/files`)
         .then(function(res) {
@@ -67,24 +82,14 @@ function getFiles(repoId, snapshot) {
 
 
 
-
+/**
+ * Requests repo's builds.
+ * @param {string} repoId     current repo's id
+ * @param {string} snapshot   snapshot from lastest build
+ * @returns {object}          API reponse
+ */
 function getBuilds(repoId) {
     return fetch(`https://api.codeclimate.com/v1/repos/${repoId}/builds`)
-        .then(function(res) {
-            return res.json();
-        })
-        .then(function(build) {
-            return build;
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
-}
-
-
-
-function latestBuildIssues(repoId, snapshot) {
-    return fetch(`https://api.codeclimate.com/v1/repos/${repoId}/snapshots/${snapshot}/issues`)
         .then(function(res) {
             return res.json();
         })
