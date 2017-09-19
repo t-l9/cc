@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Repos from './Repos';
+import Repos from './Searched';
+import RepoData from './RepoData';
 import { makeRequest } from '../utils/index'
 
 class Search extends React.Component {
@@ -8,9 +9,7 @@ class Search extends React.Component {
         this.state = {
             value: '',
             searched: [],
-            currentRepo: {
-                id: ''
-            }
+            currentRepo: null
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,9 +23,12 @@ class Search extends React.Component {
         const repo = {}
         const slug = this.state.value.toLowerCase();
         const response = makeRequest(slug);
+        let currentRepo = {};
+        let _this = this;
 
         response.then(function(res) {
             console.log(res);
+            _this.setState({currentRepo:res})
         })
 
         this.searched(slug);
@@ -53,6 +55,7 @@ class Search extends React.Component {
                 </form>
 
                 {this.state.searched.length > 0 ? <Repos repos={this.state.searched}/> : null}
+                {this.state.currentRepo != null ? <RepoData currentRepo={this.state.currentRepo}/> : null}
             </div>
         )
     }
