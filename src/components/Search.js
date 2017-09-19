@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import Repos from './Repos';
+import { makeRequest } from '../utils/index'
 
 class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             value: '',
-            searched: []
+            searched: [],
+            currentRepo: {
+                id: ''
+            }
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,19 +21,15 @@ class Search extends React.Component {
     }
 
     handleSubmit(event) {
+        const repo = {}
         const slug = this.state.value;
-        this.searched(slug);
-        fetch(`https://api.codeclimate.com/v1/repos?github_slug=${slug}`)
-            .then( function(res) {
-                return res.json();
-            })
-            .then(function(json) {
-                console.log(json);
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
+        const response = makeRequest(slug);
 
+        response.then(function(res) {
+            console.log(res);
+        })
+
+        this.searched(slug);
         event.preventDefault();
     }
 
@@ -37,7 +37,6 @@ class Search extends React.Component {
         var newArray = this.state.searched.slice();
         newArray.push(repo);
         this.setState({searched:newArray})
-        console.log(this.state.searched);
     }
 
     render() {
