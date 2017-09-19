@@ -13,28 +13,40 @@ export default class RepoData extends Component {
         return (
             <div id="repo-data">
                 <div id="gpa">
-                    { this.props.currentRepo.gpa }
+                    <p>Repo GPA: { this.props.currentRepo.gpa }</p>
                 </div>
 
                 <div id="builds">
-                    Latest Builds:
-                    <ul>
-                        { builds.map((build, i) => <li key={i}><a href={build.links.self}  target="_blank">{build.links.self}</a></li>) }
-                    </ul>
+                    { builds.length > 0 && (
+                        <div>
+                            <p>Latest Builds:</p>
+                            <ul>
+                                { builds.map((build, i) => <li key={i}><a href={build.links.self}  target="_blank">{build.links.self}</a></li>) }
+                            </ul>
+                        </div>
+                    )}
                 </div>
 
                 <div id="latest-snapshot-files-ratings">
-                    Files and Their Their Ratings:
-                    <ul>
-                        { files.map((file, i) => <li key={i}>File: {file.attributes.path} Rating: {file.attributes.rating}</li>) }
-                    </ul>
+                    { files.length > 0 && (
+                        <div>
+                            <p>Files and Their Their Ratings:</p>
+                            <ul>
+                                { files.map((file, i) => <li key={i}>File: {file.attributes.path} Rating: {file.attributes.rating}</li>) }
+                            </ul>
+                        </div>
+                    )}
                 </div>
 
                 <div id="issues">
-                    Issues by File In the Latest Build (Filtered by minor severity):
-                    <ul>
-                        { issues.map((issue, i) => <li key={i}>{issue.attributes.constant_name}</li>) }
-                    </ul>
+                    { issues.length > 0 && (
+                        <div>
+                            <p>Issues by File In the Latest Build (Filtered by minor severity):</p>
+                            <ul>
+                                { issues.map((issue, i) => <li key={i}>{issue.attributes.constant_name}</li>) }
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
         )

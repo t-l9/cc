@@ -45,20 +45,25 @@ class Search extends React.Component {
 
     render() {
         return (
-            <div>
-                <section className="side-bar">
-                    {this.state.searched.length > 0 ? <Repos repos={this.state.searched}/> : null}
-                </section>
+            <div className="container">
+                <div className="row">
 
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Repository:
-                        <input type="text" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
+                    <section className="col">
+                        <Repos repos={this.state.searched}/>
+                    </section>
 
-                {this.state.currentRepo != null ? <RepoData currentRepo={this.state.currentRepo}/> : null}
+                    <div className="col">
+                        <form onSubmit={this.handleSubmit}>
+                            <label>
+                                Repository:
+                                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                            </label>
+                            <input type="submit" value="Submit" />
+                        </form>
+
+                        {this.state.currentRepo != null ? <RepoData currentRepo={this.state.currentRepo}/> : null}
+                    </div>
+                </div>
             </div>
         )
     }
