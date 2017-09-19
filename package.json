@@ -4,7 +4,9 @@
   "description": "Coding Project",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "test": "mocha ./src/tests/**/*.js"
+
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +19,8 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
     "html-webpack-plugin": "^2.30.1",
+    "mocha": "^3.5.3",
+    "mocha-webpack": "^0.7.0",
     "node-sass": "^4.5.3",
     "path": "^0.12.7",
     "redux-logger": "^3.0.6",
