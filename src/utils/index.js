@@ -1,4 +1,3 @@
-
 export function makeRequest(slug) {
     let repo = {}
 
@@ -36,6 +35,9 @@ export function makeRequest(slug) {
         });
 }
 
+
+
+
 function getIssues(repoId, snapshot) {
     return fetch(`https://api.codeclimate.com/v1/repos/${repoId}/snapshots/${snapshot}/issues?filter[severity]=minor`)
         .then(function(res) {
@@ -50,13 +52,14 @@ function getIssues(repoId, snapshot) {
 }
 
 
+
+
 function getFiles(repoId, snapshot) {
     return fetch(`https://api.codeclimate.com/v1/repos/${repoId}/snapshots/${snapshot}/files`)
         .then(function(res) {
             return res.json();
         })
         .then(function(files) {
-
             return files;
         })
         .catch(function(error) {
@@ -65,13 +68,14 @@ function getFiles(repoId, snapshot) {
 }
 
 
+
+
 function getBuilds(repoId) {
     return fetch(`https://api.codeclimate.com/v1/repos/${repoId}/builds`)
         .then(function(res) {
             return res.json();
         })
         .then(function(build) {
-
             return build;
         })
         .catch(function(error) {
@@ -79,13 +83,14 @@ function getBuilds(repoId) {
         });
 }
 
+
+
 function latestBuildIssues(repoId, snapshot) {
     return fetch(`https://api.codeclimate.com/v1/repos/${repoId}/snapshots/${snapshot}/issues`)
         .then(function(res) {
             return res.json();
         })
         .then(function(build) {
-
             return build;
         })
         .catch(function(error) {
